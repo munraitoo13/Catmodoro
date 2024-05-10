@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+
 import { CircularProgressbarWithChildren, buildStyles } from 'react-circular-progressbar'
 import 'react-circular-progressbar/dist/styles.css'
 
@@ -7,6 +8,9 @@ import PauseIcon from '@mui/icons-material/Pause'
 import SettingsIcon from '@mui/icons-material/Settings'
 import RestartAltIcon from '@mui/icons-material/RestartAlt'
 import SkipNextIcon from '@mui/icons-material/SkipNext'
+import VolumeUpIcon from '@mui/icons-material/VolumeUp'
+import VolumeOffIcon from '@mui/icons-material/VolumeOff'
+
 import workMeow from '../assets/sounds/workMeow.mp3'
 import shortBreakMeow from '../assets/sounds/shortBreakMeow.mp3'
 import longBreakMeow from '../assets/sounds/longBreakMeow.mp3'
@@ -82,9 +86,9 @@ export default function Timer() {
   const resetPomodoro = () => {
     audios[TimerType.WORK].play()
     setTimerType(TimerType.WORK)
-    setIsPaused(true)
-    setConfig({ ...config, currentRound: 1 })
     setCountdown(getTimerValue(TimerType.WORK))
+    setConfig({ ...config, currentRound: 1 })
+    setIsPaused(true)
   }
 
   // timer color
@@ -168,6 +172,15 @@ export default function Timer() {
     })
   }, [config.volume])
 
+  // mute and unmute
+  const muteUnmute = () => {
+    if (config.volume === 0) {
+      setConfig({ ...config, volume: 0.5 })
+    } else {
+      setConfig({ ...config, volume: 0 })
+    }
+  }
+
   // html return
   return isSettings ? (
     <Settings
@@ -180,10 +193,10 @@ export default function Timer() {
     <div className="flex flex-col items-center justify-center h-screen">
       {/* timer */}
       <CircularProgressbarWithChildren
-        className="w-auto h-auto max-h-64"
+        className="w-auto h-auto max-h-44"
         value={countdown}
         maxValue={getTimerValue(timerType)}
-        strokeWidth={4}
+        strokeWidth={8}
         styles={buildStyles({
           textSize: '1rem',
           pathColor: timerColor(),
@@ -195,29 +208,29 @@ export default function Timer() {
         <div className="text-sm">{timerDescription()}</div>
       </CircularProgressbarWithChildren>
 
-      {/* play/pause button */}
-      <div
-        onClick={() => {
-          isPaused ? setIsPaused(false) : setIsPaused(true)
-        }}
-        className="mt-4 hover:cursor-pointer hover:opacity-50 scale-150"
-      >
-        {isPaused ? <PlayArrowIcon /> : <PauseIcon />}
+      {/* reset/play and pause/skip button */}
+      <div className="my-4 flex">
+        <div onClick={resetPomodoro}>
+          <RestartAltIcon className="hover:cursor-pointer opacity-50 hover:opacity-100 scale-75" />
+        </div>
+
+        <div
+          onClick={() => {
+            isPaused ? setIsPaused(false) : setIsPaused(true)
+          }}
+          className="hover:cursor-pointer hover:opacity-50 scale-150 mx-4"
+        >
+          {isPaused ? <PlayArrowIcon /> : <PauseIcon />}
+        </div>
+
+        <div onClick={nextRound}>
+          <SkipNextIcon className="hover:cursor-pointer opacity-50 hover:opacity-100 scale-75" />
+        </div>
       </div>
 
-      {/* rounds */}
-      <div className="flex flex-col items-center mt-10">
-        {config.currentRound}/{config.rounds}
-        {/* reset and skip buttons */}
-        <div className="flex flex-row">
-          <div onClick={resetPomodoro}>
-            <RestartAltIcon className="hover:cursor-pointer opacity-50 hover:opacity-100" />
-          </div>
-
-          <div onClick={nextRound}>
-            <SkipNextIcon className="hover:cursor-pointer opacity-50 hover:opacity-100" />
-          </div>
-        </div>
+      {/* round counter */}
+      <div className="opacity-50 text-sm">
+        {config.currentRound} of {config.rounds}
       </div>
 
       {/* settings button */}
@@ -225,23 +238,32 @@ export default function Timer() {
         onClick={() => {
           setIsSettings(true)
         }}
-        className="hover:cursor-pointer hover:opacity-50 mb-5 fixed bottom-0"
+        className="hover:cursor-pointer hover:opacity-50 m-5 fixed bottom-0 right-0"
       >
         <SettingsIcon />
       </div>
 
       {/* volume slider */}
-      <input
-        type="range"
-        min="0"
-        max="1"
-        step="0.01"
-        value={config.volume}
-        onChange={(e) => {
-          setConfig({ ...config, volume: parseFloat(e.target.value) })
-        }}
-        className="w-1/3"
-      />
+      <div className="flex items-center justify-left fixed bottom-0 m-5 left-0">
+        <div className="mr-2 flex items-center" onClick={muteUnmute}>
+          {config.volume === 0 ? <VolumeOffIcon /> : <VolumeUpIcon />}
+        </div>
+        <input
+          type="range"
+          min="0"
+          max="1"
+          step="0.1"
+          value={config.volume}
+          onChange={(e) => {
+            setConfig({ ...config, volume: parseFloat(e.target.value) })
+          }}
+          className={
+            config.volume === 0
+              ? 'w-1/3 cursor-pointer rounded-lg appearance-none bg-neutral-800 accent-neutral-700'
+              : 'w-1/3 cursor-pointer rounded-lg appearance-none bg-neutral-800 accent-white'
+          }
+        />
+      </div>
     </div>
   )
 }

@@ -576,6 +576,28 @@ input[type='number']::-webkit-outer-spin-button,
   top: 0px;
 }
 
+.left-0 {
+  left: 0px;
+}
+
+.right-0 {
+  right: 0px;
+}
+
+.m-5 {
+  margin: 1.25rem;
+}
+
+.mx-4 {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.my-4 {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
 .mb-2 {
   margin-bottom: 0.5rem;
 }
@@ -594,6 +616,14 @@ input[type='number']::-webkit-outer-spin-button,
 
 .mt-4 {
   margin-top: 1rem;
+}
+
+.mr-4 {
+  margin-right: 1rem;
+}
+
+.mr-2 {
+  margin-right: 0.5rem;
 }
 
 .flex {
@@ -620,6 +650,18 @@ input[type='number']::-webkit-outer-spin-button,
   max-height: 16rem;
 }
 
+.max-h-32 {
+  max-height: 8rem;
+}
+
+.max-h-36 {
+  max-height: 9rem;
+}
+
+.max-h-44 {
+  max-height: 11rem;
+}
+
 .w-1\/3 {
   width: 33.333333%;
 }
@@ -636,6 +678,10 @@ input[type='number']::-webkit-outer-spin-button,
   width: 100vw;
 }
 
+.w-1\/2 {
+  width: 50%;
+}
+
 .scale-150 {
   --tw-scale-x: 1.5;
   --tw-scale-y: 1.5;
@@ -646,6 +692,22 @@ input[type='number']::-webkit-outer-spin-button,
   --tw-scale-x: .75;
   --tw-scale-y: .75;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.scale-100 {
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.appearance-none {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
 }
 
 .flex-row {
@@ -672,6 +734,14 @@ input[type='number']::-webkit-outer-spin-button,
   border-radius: 0.375rem;
 }
 
+.rounded-lg {
+  border-radius: 0.5rem;
+}
+
+.rounded-sm {
+  border-radius: 0.125rem;
+}
+
 .bg-neutral-800 {
   --tw-bg-opacity: 1;
   background-color: rgb(38 38 38 / var(--tw-bg-opacity));
@@ -686,6 +756,16 @@ input[type='number']::-webkit-outer-spin-button,
   background-color: transparent;
 }
 
+.bg-gray-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(229 231 235 / var(--tw-bg-opacity));
+}
+
+.bg-neutral-700 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(64 64 64 / var(--tw-bg-opacity));
+}
+
 .px-3 {
   padding-left: 0.75rem;
   padding-right: 0.75rem;
@@ -694,6 +774,10 @@ input[type='number']::-webkit-outer-spin-button,
 .py-1 {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
+}
+
+.text-left {
+  text-align: left;
 }
 
 .text-2xl {
@@ -711,8 +795,17 @@ input[type='number']::-webkit-outer-spin-button,
   line-height: 1.25rem;
 }
 
+.text-xs {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
 .font-bold {
   font-weight: 700;
+}
+
+.font-light {
+  font-weight: 300;
 }
 
 .text-white {
@@ -720,8 +813,24 @@ input[type='number']::-webkit-outer-spin-button,
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
+.accent-white {
+  accent-color: #fff;
+}
+
+.accent-neutral-950 {
+  accent-color: #0a0a0a;
+}
+
+.accent-neutral-700 {
+  accent-color: #404040;
+}
+
 .opacity-50 {
   opacity: 0.5;
+}
+
+.opacity-75 {
+  opacity: 0.75;
 }
 
 .contain-content {
@@ -750,4 +859,16 @@ input[type='number']::-webkit-outer-spin-button,
 
 .hover\:opacity-50:hover {
   opacity: 0.5;
+}
+
+@media (prefers-color-scheme: dark) {
+  .dark\:bg-gray-700 {
+    --tw-bg-opacity: 1;
+    background-color: rgb(55 65 81 / var(--tw-bg-opacity));
+  }
+
+  .dark\:bg-neutral-700 {
+    --tw-bg-opacity: 1;
+    background-color: rgb(64 64 64 / var(--tw-bg-opacity));
+  }
 }
