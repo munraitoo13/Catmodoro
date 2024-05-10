@@ -80,9 +80,10 @@ export default function Timer() {
 
   // pomodoro reset
   const resetPomodoro = () => {
+    audios[TimerType.WORK].play()
     setTimerType(TimerType.WORK)
     setIsPaused(true)
-    config.currentRound = 1
+    setConfig({ ...config, currentRound: 1 })
     setCountdown(getTimerValue(TimerType.WORK))
   }
 
