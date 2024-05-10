@@ -245,9 +245,10 @@ export default function Timer() {
 
       {/* volume slider */}
       <div className="flex items-center justify-left fixed bottom-0 m-5 left-0">
-        <div className="mr-2 flex items-center" onClick={muteUnmute}>
-          {config.volume === 0 ? <VolumeOffIcon /> : <VolumeUpIcon />}
+        <div className="mr-2 flex items-center cursor-pointer" onClick={muteUnmute}>
+          {config.volume === 0 ? <VolumeOffIcon className="opacity-50" /> : <VolumeUpIcon />}
         </div>
+
         <input
           type="range"
           min="0"

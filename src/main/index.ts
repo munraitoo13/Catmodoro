@@ -1,7 +1,7 @@
 import { app, shell, BrowserWindow, ipcMain } from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
-import icon from '../../resources/icon.svg?asset'
+import icon from '../../resources/icon.ico?asset'
 const ipc = ipcMain
 
 function createWindow(): void {
@@ -14,6 +14,7 @@ function createWindow(): void {
     resizable: false,
     fullscreenable: false,
     autoHideMenuBar: true,
+    icon: `${__dirname}/../../resources/icon.ico`,
     ...(process.platform === 'linux' ? { icon } : {}),
     webPreferences: {
       nodeIntegration: true,
