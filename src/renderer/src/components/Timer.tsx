@@ -206,14 +206,12 @@ export default function Timer() {
       </CircularProgressbarWithChildren>
 
       {/* reset/play and pause/skip button */}
-      <div>
-        <Controls
-          isPaused={isPaused}
-          setIsPaused={setIsPaused}
-          resetPomodoro={resetPomodoro}
-          nextRound={nextRound}
-        />
-      </div>
+      <Controls
+        isPaused={isPaused}
+        setIsPaused={setIsPaused}
+        resetPomodoro={resetPomodoro}
+        nextRound={nextRound}
+      />
 
       {/* round counter */}
       <div className="opacity-50 text-sm">
@@ -230,7 +228,7 @@ export default function Timer() {
         <SettingsIcon />
       </div>
 
-      {/* volume slider */}
+      {/* volume control */}
       <div className="flex items-center justify-left fixed bottom-0 m-5 left-0">
         <div className="mr-2 flex items-center cursor-pointer" onClick={muteUnmute}>
           {config.volume === 0 ? <VolumeOffIcon className="opacity-50" /> : <VolumeUpIcon />}
