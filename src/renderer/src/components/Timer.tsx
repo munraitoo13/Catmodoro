@@ -3,11 +3,7 @@ import { useState, useEffect } from 'react'
 import { CircularProgressbarWithChildren, buildStyles } from 'react-circular-progressbar'
 import 'react-circular-progressbar/dist/styles.css'
 
-import PlayArrowIcon from '@mui/icons-material/PlayArrow'
-import PauseIcon from '@mui/icons-material/Pause'
 import SettingsIcon from '@mui/icons-material/Settings'
-import RestartAltIcon from '@mui/icons-material/RestartAlt'
-import SkipNextIcon from '@mui/icons-material/SkipNext'
 import VolumeUpIcon from '@mui/icons-material/VolumeUp'
 import VolumeOffIcon from '@mui/icons-material/VolumeOff'
 
@@ -16,6 +12,7 @@ import shortBreakMeow from '../assets/sounds/shortBreakMeow.mp3'
 import longBreakMeow from '../assets/sounds/longBreakMeow.mp3'
 
 import Settings from './Settings'
+import Controls from './Controls'
 
 // timer types
 enum TimerType {
@@ -34,7 +31,7 @@ export default function Timer() {
   })
 
   // configuration states
-  let [config, setConfig] = useState({
+  const [config, setConfig] = useState({
     volume: 0.5,
     work: 25,
     shortBreak: 5,
@@ -209,23 +206,13 @@ export default function Timer() {
       </CircularProgressbarWithChildren>
 
       {/* reset/play and pause/skip button */}
-      <div className="my-4 flex">
-        <div onClick={resetPomodoro}>
-          <RestartAltIcon className="hover:cursor-pointer opacity-50 hover:opacity-100 scale-75" />
-        </div>
-
-        <div
-          onClick={() => {
-            isPaused ? setIsPaused(false) : setIsPaused(true)
-          }}
-          className="hover:cursor-pointer hover:opacity-50 scale-150 mx-4"
-        >
-          {isPaused ? <PlayArrowIcon /> : <PauseIcon />}
-        </div>
-
-        <div onClick={nextRound}>
-          <SkipNextIcon className="hover:cursor-pointer opacity-50 hover:opacity-100 scale-75" />
-        </div>
+      <div>
+        <Controls
+          isPaused={isPaused}
+          setIsPaused={setIsPaused}
+          resetPomodoro={resetPomodoro}
+          nextRound={nextRound}
+        />
       </div>
 
       {/* round counter */}
