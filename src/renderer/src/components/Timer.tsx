@@ -14,15 +14,13 @@ import longBreakMeow from '../assets/sounds/longBreakMeow.mp3'
 import Settings from './Settings'
 import Controls from './Controls'
 
-// timer types
-enum TimerType {
-  WORK = 'work',
-  SHORT_BREAK = 'shortBreak',
-  LONG_BREAK = 'longBreak'
-}
-
-// timer component
 export default function Timer() {
+  // timer types
+  enum TimerType {
+    WORK = 'work',
+    SHORT_BREAK = 'shortBreak',
+    LONG_BREAK = 'longBreak'
+  }
   // meowing sounds
   const [audios] = useState({
     [TimerType.WORK]: new Audio(workMeow),
@@ -36,8 +34,7 @@ export default function Timer() {
     work: 25,
     shortBreak: 5,
     longBreak: 15,
-    rounds: 4,
-    currentRound: 1
+    rounds: 4
   })
 
   // interface states
@@ -47,6 +44,20 @@ export default function Timer() {
   // timer states
   const [timerType, setTimerType] = useState(TimerType.WORK)
   const [countdown, setCountdown] = useState(config.work * 60)
+  const [currentRound, setCurrentRound] = useState(1)
+
+  // store configuration
+  useEffect(() => {
+    localStorage.setItem('config', JSON.stringify(config))
+  }, [config])
+
+  // load configuration
+  useEffect(() => {
+    const savedConfig = localStorage.getItem('config')
+    if (savedConfig) {
+      setConfig(JSON.parse(savedConfig))
+    }
+  }, [])
 
   // time formatting
   const formatTime = (seconds: number) => {
@@ -84,7 +95,7 @@ export default function Timer() {
     audios[TimerType.WORK].play()
     setTimerType(TimerType.WORK)
     setCountdown(getTimerValue(TimerType.WORK))
-    setConfig({ ...config, currentRound: 1 })
+    setCurrentRound(1)
     setIsPaused(true)
   }
 
@@ -116,7 +127,7 @@ export default function Timer() {
   const nextRound = () => {
     switch (timerType) {
       case TimerType.WORK:
-        if (config.currentRound === config.rounds) {
+        if (currentRound === config.rounds) {
           audios[TimerType.LONG_BREAK].play()
           setTimerType(TimerType.LONG_BREAK)
           setCountdown(getTimerValue(TimerType.LONG_BREAK))
@@ -130,14 +141,14 @@ export default function Timer() {
         audios[TimerType.WORK].play()
         setTimerType(TimerType.WORK)
         setCountdown(getTimerValue(TimerType.WORK))
-        setConfig({ ...config, currentRound: config.currentRound + 1 })
+        setCurrentRound((prevRound) => prevRound + 1)
         setIsPaused(true)
         break
       case TimerType.LONG_BREAK:
         audios[TimerType.WORK].play()
         setTimerType(TimerType.WORK)
         setCountdown(getTimerValue(TimerType.WORK))
-        setConfig({ ...config, currentRound: 1 })
+        setCurrentRound(1)
         setIsPaused(true)
         break
     }
@@ -215,7 +226,7 @@ export default function Timer() {
 
       {/* round counter */}
       <div className="opacity-50 text-sm">
-        {config.currentRound} of {config.rounds}
+        {currentRound} of {config.rounds}
       </div>
 
       {/* settings button */}
