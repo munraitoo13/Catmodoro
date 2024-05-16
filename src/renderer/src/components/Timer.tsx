@@ -21,20 +21,33 @@ export default function Timer() {
     SHORT_BREAK = 'shortBreak',
     LONG_BREAK = 'longBreak'
   }
+
+  // configuration states
+  const [config, setConfig] = useState(() => {
+    const savedConfig = localStorage.getItem('config')
+    if (savedConfig) {
+      return JSON.parse(savedConfig)
+    } else {
+      return {
+        work: 25,
+        shortBreak: 5,
+        longBreak: 15,
+        rounds: 4,
+        volume: 0.5
+      }
+    }
+  })
+
+  // load config
+  useEffect(() => {
+    localStorage.setItem('config', JSON.stringify(config))
+  }, [config])
+
   // meowing sounds
   const [audios] = useState({
     [TimerType.WORK]: new Audio(workMeow),
     [TimerType.SHORT_BREAK]: new Audio(shortBreakMeow),
     [TimerType.LONG_BREAK]: new Audio(longBreakMeow)
-  })
-
-  // configuration states
-  const [config, setConfig] = useState({
-    volume: 0.5,
-    work: 25,
-    shortBreak: 5,
-    longBreak: 15,
-    rounds: 4
   })
 
   // interface states
@@ -45,19 +58,6 @@ export default function Timer() {
   const [timerType, setTimerType] = useState(TimerType.WORK)
   const [countdown, setCountdown] = useState(config.work * 60)
   const [currentRound, setCurrentRound] = useState(1)
-
-  // store configuration
-  useEffect(() => {
-    localStorage.setItem('config', JSON.stringify(config))
-  }, [config])
-
-  // load configuration
-  useEffect(() => {
-    const savedConfig = localStorage.getItem('config')
-    if (savedConfig) {
-      setConfig(JSON.parse(savedConfig))
-    }
-  }, [])
 
   // time formatting
   const formatTime = (seconds: number) => {
@@ -249,7 +249,7 @@ export default function Timer() {
           type="range"
           min="0"
           max="1"
-          step="0.1"
+          step="0.01"
           value={config.volume}
           onChange={(e) => {
             setConfig({ ...config, volume: parseFloat(e.target.value) })
