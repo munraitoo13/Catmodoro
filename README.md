@@ -1,20 +1,17 @@
-<h1 align="center">Catmodoro!</h1>
-
-<p float="left" align="center">
-  <img width="30%" src="https://i.postimg.cc/gkXBkXM3/electron-d-Cr-BYs-Tw-CU.png" alt="JavaScript" />
-  <img width="30%" src="https://i.postimg.cc/NGPzc7xg/electron-6-ANu-Dr-I3-Ht.png" alt="JavaScript" />
-  <img width="30%" src="https://i.postimg.cc/VLxZSfTp/electron-IDMQEv-X6rv.png" alt="JavaScript" />
-</p>
-
-<h2 align="center">Project info</h2>
-
-Welcome to **Catmodoro!** This is a simple and lightweight pomodoro timer to help you keep track of any activity you do. As you complete your work intervals, more cats appear, making productivity fun and visually rewarding. Enjoy your work and let these adorable cats help manage your time effectively.
-
-> [!WARNING]
-> This is an **alpha** project, keep in mind it has limitations and bugs. Found a bug? Help us squash it! Report issues in the Issues tab of this GitHub repository.
-
-<h2 align="center">Built with</h2>
 <div align="center">
+  <h3 style="font-size: 2rem">Catmodoro</h3>
+  <p>
+    Catmodoro is meant to be a clean, cute and lightweight pomodoro timer to help you keep track of any activity you do. As you complete your work intervals, more cats appear, making productivity fun and visually rewarding. Enjoy your work and let these adorable cats help manage your time effectively.
+  </p>
+  <p>
+    <img width="25%" src="https://i.imgur.com/Yu9tv2O.png" alt="Short" />
+    <img width="30%" src="https://i.imgur.com/PeuLnp6.png" alt="Work" />
+    <img width="25%" src="https://i.imgur.com/mEsPslQ.png" alt="Long" />
+  </p>
+</div>
+
+<div align="center">
+  <h3 style="font-size: 2rem">Built with</h3>
   <img src="https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB" alt="React" />
   <img src="https://img.shields.io/badge/Electron-191970?style=for-the-badge&logo=Electron&logoColor=white" alt="Electron" />
   <img src="https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
@@ -24,14 +21,53 @@ Welcome to **Catmodoro!** This is a simple and lightweight pomodoro timer to hel
   <img src="https://img.shields.io/badge/MUI-%230081CB.svg?style=for-the-badge&logo=mui&logoColor=white" alt="MUI" />
 </div>
 
-<h2 align="center">Forking, cloning, and contributing</h2>
+<h3 align="center" style="font-size: 2rem">Getting started</h3>
 
-> [!TIP]
-> Project build instructions can be found on **GUIDANCE.md** file.
+To get a local copy up and running follow these simple steps:
 
-<h3 align="center">Quick guide to get started</h3>
+### Pre-requisites
 
-- **Fork the repo:** click the "fork" button on the top right corner of this repository.
-- **Clone the repo:** click the "fork" button on the top right corner of this repository. Instructions for cloning can be found <a href="https://git-scm.com/">here</a>.
-- **Push your changes:** once you're happy with your edits, push them to your forked repository on github.
-- **Consider contributing:** if you'd like your changes to be integrated back into the original project, you can create a pull request. Instructions for creating pull requests can be found <a href="https://docs.github.com/en/pull-requests">here</a>
+- Node.js
+- Yarn
+- Git
+
+### Installation
+
+1. Clone the repository
+
+```
+git clone https://github.com/munraitoo13/catmodoro
+```
+
+2. Navigate to the repository folder and install all the packages
+
+```
+yarn
+```
+
+3. Get the project running
+
+```
+yarn work
+```
+
+<h3 style="font-size: 2rem" align="center">Roadmap</h3>
+<p align="center">Those are the features planned to come out on this app. See the issues tab for a full list of proposed features (and known issues).</p>
+
+- [x] Add kitten sounds on timer changes
+- [x] Add persistent localStorage support
+- [ ] Add multi-language support
+- [ ] Add an auto-complete to-do list
+
+<div align="center">
+  <h3 style="font-size: 2rem">Contributing</h3>
+  <p>Contributions are what make the open source community an amazing place to learn and create. Any contributions will be greatly appreciated.</p>
+  <p>If you have a suggestion that would make this project better, please fork the repo and create a pull request. You can also simply open an issue with the <b>suggestion</b> tag. You can find more info on how to contribute to a project <a href="https://git-scm.com/book/en/v2/GitHub-Contributing-to-a-Project">here</a>.</p>
+</div>
+
+<div align="center">
+  <h3 style="font-size: 2rem">Contact</h3>
+  <b>Augusto Mendes</b><br>
+  <a href="https://linktr.ee/munraitoo13">@munraitoo13</a> on all socials or click on my @.<br>
+  Thanks for your attention and i hope you liked this project. Cheers! 
+</div>
