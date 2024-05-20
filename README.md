@@ -27,9 +27,9 @@ To get a local copy up and running follow these simple steps:
 
 ### Pre-requisites
 
-- Node.js
-- Yarn
-- Git
+- [Git](https://git-scm.com/downloads)
+- [Node.js](https://nodejs.org/en/download/)
+- [Yarn](https://classic.yarnpkg.com/lang/en/docs/install/)
 
 ### Installation
 
